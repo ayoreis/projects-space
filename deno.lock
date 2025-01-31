@@ -233,7 +233,6 @@
   "workspace": {
     "dependencies": [
       "jsr:@fresh/core@^2.0.0-alpha.29",
-      "jsr:@fresh/plugin-tailwind@^0.0.1-alpha.7",
       "npm:@preact/signals@^2.0.1",
       "npm:preact@^10.25.4"
     ]
