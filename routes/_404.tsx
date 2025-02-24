@@ -1,4 +1,4 @@
-import { define } from "../define.ts";
+import { define } from "../utils.ts";
 
 export default define.page(({ url }) => {
 	return (

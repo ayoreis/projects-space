@@ -1,6 +1,6 @@
-import { define } from "../define.ts";
+import { define } from "../utils.ts";
 
-export default define.page(({ Component }) => {
+export default define.page(({ Component, state }) => {
 	return (
 		<html lang="en">
 			<head>
@@ -8,22 +8,36 @@ export default define.page(({ Component }) => {
 				<meta name="viewport" content="width=device-width" />
 
 				<title>Projects Space</title>
-
-				<link rel="stylesheet" href="/styles.css" />
-				<link rel="icon" href="/favicon.svg" />
 			</head>
 
 			<body>
 				<header>
 					<nav>
+						<form id="logout" method="post" action="/logout"></form>
+
 						<menu>
 							<li>
 								<a href="/">Home</a>
 							</li>
 
-							<li>
-								<a href="/login">Login</a>
-							</li>
+							{state.user
+								? (
+									<li>
+										{state.user.username}{" "}
+										(<button form="logout">Log out</button>)
+									</li>
+								)
+								: (
+									<>
+										<li>
+											<a href="/signup">Sign up</a>
+										</li>
+
+										<li>
+											<a href="/login">Log in</a>
+										</li>
+									</>
+								)}
 						</menu>
 					</nav>
 				</header>
@@ -31,14 +45,6 @@ export default define.page(({ Component }) => {
 				<main>
 					<Component />
 				</main>
-
-				<footer>
-					<p>
-						<a target="_blank" href="https://github.com/ayoreis/projects-space">
-							(source)
-						</a>
-					</p>
-				</footer>
 			</body>
 		</html>
 	);
